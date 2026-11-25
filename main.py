@@ -24,6 +24,9 @@ def main() -> int:
     if not ENTRY.strip():
         print("entry must not be whitespace-only", file=sys.stderr)
         return 1
+    if ENTRY != ENTRY.strip():
+        print("entry must not have leading or trailing whitespace", file=sys.stderr)
+        return 1
     if any(ord(ch) < 0x20 for ch in ENTRY):
         print("entry contains a control character", file=sys.stderr)
         return 1
